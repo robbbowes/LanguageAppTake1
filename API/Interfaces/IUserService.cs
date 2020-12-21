@@ -7,7 +7,7 @@ namespace API.Interfaces
 {
     public interface IUserService
     {
-        Task<IEnumerable<GetUserDto>> GetUsersAsync();
-        Task<GetUserDto> GetUserAsync(string name);
+        Task<ServiceResponse<IEnumerable<GetUserDto>>> GetUsersAsync();
+        Task<ServiceResponse<GetUserDto>> GetUserAsync(string name);
     }
 }

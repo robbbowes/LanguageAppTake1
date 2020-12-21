@@ -17,13 +17,13 @@ namespace API.Controllers
         }
 
         [HttpGet("{userName}")]
-        public async Task<ActionResult<GetUserDto>> GetUser(string userName)
+        public async Task<ActionResult<ServiceResponse<GetUserDto>>> GetUser(string userName)
         {
             return await _userService.GetUserAsync(userName);
         }
     
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetUserDto>>> GetUsers()
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetUserDto>>>> GetUsers()
         {
             return Ok(await _userService.GetUsersAsync());
         }

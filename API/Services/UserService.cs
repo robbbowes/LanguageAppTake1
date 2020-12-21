@@ -20,18 +20,31 @@ namespace API.Services
             _context = context;
         }
 
-        public async Task<GetUserDto> GetUserAsync(string name)
+        public async Task<ServiceResponse<GetUserDto>> GetUserAsync(string name)
         {
+            ServiceResponse<GetUserDto> response = new ServiceResponse<GetUserDto>();
             AppUser appUser = await _context.AppUsers
                 .Include(x => x.AppUserCourses).ThenInclude(y => y.Course)
                 .FirstOrDefaultAsync(u => u.UserName.ToLower() == name.ToLower());
-            return _mapper.Map<GetUserDto>(appUser);
+
+            if (appUser == null)
+            {
+                response.Success = false;
+                response.Message = "User not found";
+            }
+            else
+            {
+                response.Data = _mapper.Map<GetUserDto>(appUser);
+            }
+            return response;
         }
 
-        public async Task<IEnumerable<GetUserDto>> GetUsersAsync()
+        public async Task<ServiceResponse<IEnumerable<GetUserDto>>> GetUsersAsync()
         {
+            ServiceResponse<IEnumerable<GetUserDto>> response = new ServiceResponse<IEnumerable<GetUserDto>>();
             List<AppUser> appUsers = await _context.AppUsers.ToListAsync();
-            return appUsers.Select(u => _mapper.Map<GetUserDto>(u)).ToList();
+            response.Data = appUsers.Select(u => _mapper.Map<GetUserDto>(u)).ToList();
+            return response;
         }
     }
 }

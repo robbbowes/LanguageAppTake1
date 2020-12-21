@@ -7,8 +7,8 @@ namespace API.Interfaces
 {
     public interface ICourseService
     {
-         Task<IEnumerable<GetCourseDto>> GetCoursesAsync();
-         Task<GetCourseDto> GetCourseAsync(int id);
-         Task<GetCourseDto> GetCourseLessonsAsync(int id);
+         Task<ServiceResponse<IEnumerable<GetCourseDto>>> GetCoursesAsync();
+         Task<ServiceResponse<GetCourseDto>> GetCourseAsync(int id, bool includeLessons);
+        //  Task<ServiceResponse<GetCourseDto>> GetCourseLessonsAsync(int id);
     }
 }

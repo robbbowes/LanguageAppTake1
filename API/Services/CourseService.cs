@@ -21,26 +21,38 @@ namespace API.Services
             _mapper = mapper;
         }
 
-        public async Task<GetCourseDto> GetCourseAsync(int id)
+        public async Task<ServiceResponse<GetCourseDto>> GetCourseAsync(int id, bool includeLessons)
         {
-            Course course = await _context.Courses
-                .FirstOrDefaultAsync(c => c.Id == id);
-            return _mapper.Map<GetCourseDto>(course);
+            ServiceResponse<GetCourseDto> response = new ServiceResponse<GetCourseDto>();
+
+            Course course;
+            if (includeLessons)
+            {
+                course = await _context.Courses.FirstOrDefaultAsync(c => c.Id == id);
+            }
+            else
+            {
+                course = await _context.Courses.Include(c => c.Lessons).FirstOrDefaultAsync(c => c.Id == id);
+            }
+
+            if (course == null)
+            {
+                response.Success = false;
+                response.Message = "Course not found";
+            }
+            else
+            {
+                response.Data = _mapper.Map<GetCourseDto>(course);
+            }
+            return response;
         }
 
-        public async Task<GetCourseDto> GetCourseLessonsAsync(int id)
+        public async Task<ServiceResponse<IEnumerable<GetCourseDto>>> GetCoursesAsync()
         {
-            Course course = await _context.Courses
-                .Include(c => c.Lessons)
-                .FirstOrDefaultAsync(c => c.Id == id);
-            return _mapper.Map<GetCourseDto>(course);
-        }
-
-        public async Task<IEnumerable<GetCourseDto>> GetCoursesAsync()
-        {
-            List<Course> courses = await _context.Courses
-                .ToListAsync();
-            return courses.Select(c => _mapper.Map<GetCourseDto>(c)).ToList();
+            ServiceResponse<IEnumerable<GetCourseDto>> response = new ServiceResponse<IEnumerable<GetCourseDto>>();
+            List<Course> courses = await _context.Courses.ToListAsync();
+            response.Data = courses.Select(c => _mapper.Map<GetCourseDto>(c)).ToList();
+            return response;
         }
     }
 }

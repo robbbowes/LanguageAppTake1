@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.DTOs.Lesson;
+using API.DTOs.Sentence;
+using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,28 +17,28 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetLessonDto>>> GetLessons()
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetLessonDto>>>> GetLessons()
         {
-            return Ok(await _lessonService.GetLessonsAsync());
+            return await _lessonService.GetLessonsAsync();
         }
 
         [HttpGet("{lessonId}")]
-        public async Task<ActionResult<GetLessonDto>> GetLesson(int lessonId)
+        public async Task<ActionResult<ServiceResponse<GetLessonDto>>> GetLesson(int lessonId)
         {
-            return Ok(await _lessonService.GetLessonAsync(lessonId));
+            return await _lessonService.GetLessonAsync(lessonId);
         }
 
         [HttpGet("{lessonId}/sentence")]
-        public async Task<ActionResult<GetLessonDto>> GetLessonSentences(int lessonId)
+        public async Task<ActionResult<ServiceResponse<GetLessonDto>>> GetLessonSentences(int lessonId)
         {
-            return Ok(await _lessonService.GetLessonSentencesAsync(lessonId));
+            return await _lessonService.GetLessonSentencesAsync(lessonId);
         }
 
         
         [HttpGet("{lessonId}/sentence/{sentenceId}")]
-        public async Task<ActionResult<GetLessonDto>> GetLessonSentence(int lessonId, int sentenceId)
+        public async Task<ActionResult<ServiceResponse<GetSentenceDto>>> GetLessonSentence(int lessonId, int sentenceId)
         {
-            return Ok(await _lessonService.GetLessonSentenceAsync(lessonId, sentenceId));
+            return await _lessonService.GetLessonSentenceAsync(lessonId, sentenceId);
         }
     }
 }

@@ -20,15 +20,20 @@ namespace API.Services
             _context = context;
         }
 
-        public async Task<GetSentenceDto> GetSentenceAsync(int sentenceId)
+        public async Task<ServiceResponse<GetSentenceDto>> GetSentenceAsync(int sentenceId)
         {
-            return _mapper.Map<GetSentenceDto>(await _context.Sentences.FirstOrDefaultAsync(s => s.Id == sentenceId));
-        }
-
-        public async Task<IEnumerable<GetSentenceDto>> GetSentencesForLanguageAsync(int languageId)
-        {
-            List<Sentence> sentences = await _context.Sentences.Where(s => s.LanguageId == languageId).ToListAsync();
-            return sentences.Select(s => _mapper.Map<GetSentenceDto>(s)).ToList();
+            ServiceResponse<GetSentenceDto> response = new ServiceResponse<GetSentenceDto>();
+            Sentence sentence = await _context.Sentences.FirstOrDefaultAsync(s => s.Id == sentenceId);
+            if (sentence == null)
+            {
+                response.Success = false;
+                response.Message = "Sentence not found";
+            }
+            else
+            {
+                response.Data = _mapper.Map<GetSentenceDto>(sentence);
+            }
+            return response;
         }
     }
 }

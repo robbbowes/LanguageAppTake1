@@ -96,5 +96,13 @@ namespace API.Services
             return response;
         }
 
+        
+        public async Task<ServiceResponse<IEnumerable<GetSentenceDto>>> GetLanguageSentencesAsync(int languageId)
+        {
+            ServiceResponse<IEnumerable<GetSentenceDto>> response = new ServiceResponse<IEnumerable<GetSentenceDto>>();
+            List<Sentence> sentences = await _context.Sentences.Where(s => s.LanguageId == languageId).ToListAsync();
+            response.Data = sentences.Select(s => _mapper.Map<GetSentenceDto>(s)).ToList();
+            return response;
+        }
     }
 }

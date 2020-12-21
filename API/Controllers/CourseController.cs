@@ -16,21 +16,21 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetCourseDto>>> GetCourses()
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetCourseDto>>>> GetCourses()
         {
-            return Ok(await _courseService.GetCoursesAsync());
+            return await _courseService.GetCoursesAsync();
         }
 
         [HttpGet("{courseId}")]
-        public async Task<ActionResult<GetCourseDto>> GetCourse(int courseId)
+        public async Task<ActionResult<ServiceResponse<GetCourseDto>>> GetCourse(int courseId)
         {
-            return await _courseService.GetCourseAsync(courseId);
+            return await _courseService.GetCourseAsync(courseId, false);
         }
 
         [HttpGet("{courseId}/lesson")]
-        public async Task<ActionResult<GetCourseDto>> GetCourseLessons(int courseId)
+        public async Task<ActionResult<ServiceResponse<GetCourseDto>>> GetCourseLessons(int courseId)
         {
-            return await _courseService.GetCourseLessonsAsync(courseId);
+            return await _courseService.GetCourseAsync(courseId, true);
         }
     }
 }

@@ -21,32 +21,61 @@ namespace API.Services
             _context = context;
         }
 
-        public async Task<GetLessonDto> GetLessonAsync(int lessonId)
+        public async Task<ServiceResponse<GetLessonDto>> GetLessonAsync(int lessonId)
         {
-            return _mapper.Map<GetLessonDto>(
-                await _context.Lessons.FirstOrDefaultAsync(l => l.Id == lessonId)
-            );
+            ServiceResponse<GetLessonDto> response = new ServiceResponse<GetLessonDto>();
+            Lesson lesson = await _context.Lessons.FirstOrDefaultAsync(l => l.Id == lessonId);
+            if (lesson == null)
+            {
+                response.Success = false;
+                response.Message = "Lesson not found";
+            }
+            else
+            {
+                response.Data = _mapper.Map<GetLessonDto>(lesson);
+            }
+            return response;
         }
 
-        public async Task<IEnumerable<GetLessonDto>> GetLessonsAsync()
+        public async Task<ServiceResponse<IEnumerable<GetLessonDto>>> GetLessonsAsync()
         {
+            ServiceResponse<IEnumerable<GetLessonDto>> response = new ServiceResponse<IEnumerable<GetLessonDto>>();
             List<Lesson> lessons = await _context.Lessons.ToListAsync();
-            return lessons.Select(l => _mapper.Map<GetLessonDto>(l)).ToList();
+            response.Data = lessons.Select(l => _mapper.Map<GetLessonDto>(l)).ToList();
+            return response;
         }
 
-        public async Task<GetLessonDto> GetLessonSentencesAsync(int lessonId)
+        public async Task<ServiceResponse<GetLessonDto>> GetLessonSentencesAsync(int lessonId)
         {
-            return _mapper.Map<GetLessonDto>(
-                await _context.Lessons
-                    .Include(l => l.Sentences)
-                    .FirstOrDefaultAsync(l => l.Id == lessonId)                
-            );
+            ServiceResponse<GetLessonDto> response = new ServiceResponse<GetLessonDto>();
+
+            Lesson lesson = await _context.Lessons.Include(l => l.Sentences).FirstOrDefaultAsync(l => l.Id == lessonId);
+            if (lesson == null)
+            {
+                response.Success = false;
+                response.Message = "Lesson not found";
+            }
+            else
+            {
+                response.Data = _mapper.Map<GetLessonDto>(lesson);
+            }
+            return response;
         }
 
-        public async Task<GetSentenceDto> GetLessonSentenceAsync(int lessonId, int sentenceId)
+        public async Task<ServiceResponse<GetSentenceDto>> GetLessonSentenceAsync(int lessonId, int sentenceId)
         {
+            ServiceResponse<GetSentenceDto> response = new ServiceResponse<GetSentenceDto>();
             Sentence sentence = await _context.Sentences.FirstOrDefaultAsync(s => s.LessonId == lessonId && s.Id == sentenceId);
-            return _mapper.Map<GetSentenceDto>(sentence);
+            if (sentence == null)
+            {
+                response.Success = false;
+                response.Message = "Sentence not found";
+            }
+            else
+            {
+                response.Data = _mapper.Map<GetSentenceDto>(sentence);
+            }
+            return response;
         }
     }
 }
