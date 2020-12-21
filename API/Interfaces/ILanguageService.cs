@@ -8,10 +8,10 @@ namespace API.Interfaces
 {
     public interface ILanguageService
     {
-         Task<IEnumerable<GetLanguageDto>> GetLanguagesAsync();
-         Task<GetLanguageDto> GetLanguageAsync(int languageId);
-         Task<IEnumerable<GetLanguageDto>> AddLanguageAsync(AddLanguageDto newLanguage);
-         Task<GetLanguageDto> EditLanguageAsync(int languageId, EditLanguageDto updatedLanguage);
-         Task<IEnumerable<GetLanguageDto>> DeleteLanguageAsync(int languageId);
+         Task<ServiceResponse<IEnumerable<GetLanguageDto>>> GetLanguagesAsync();
+         Task<ServiceResponse<GetLanguageDto>> GetLanguageAsync(int languageId);
+         Task<ServiceResponse<IEnumerable<GetLanguageDto>>> AddLanguageAsync(AddLanguageDto newLanguage);
+         Task<ServiceResponse<GetLanguageDto>> EditLanguageAsync(int languageId, EditLanguageDto updatedLanguage);
+         Task<ServiceResponse<IEnumerable<GetLanguageDto>>> DeleteLanguageAsync(int languageId);
     }
 }

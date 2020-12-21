@@ -17,31 +17,31 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetLanguageDto>>> GetLanguages()
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetLanguageDto>>>> GetLanguages()
         {
             return Ok(await _languageService.GetLanguagesAsync());
         }
 
         [HttpGet("{languageId}")]
-        public async Task<ActionResult<GetLanguageDto>> GetLanguage(int languageId)
+        public async Task<ActionResult<ServiceResponse<GetLanguageDto>>> GetLanguage(int languageId)
         {
             return await _languageService.GetLanguageAsync(languageId);
         }
 
         [HttpPost]
-        public async Task<ActionResult<IEnumerable<GetLanguageDto>>> AddLanguage(AddLanguageDto newLanguage)
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetLanguageDto>>>> AddLanguage(AddLanguageDto newLanguage)
         {
             return Ok(await _languageService.AddLanguageAsync(newLanguage));
         }
 
         [HttpPut("{languageId}")]
-        public async Task<ActionResult<GetLanguageDto>> EditLanguage(int languageId, EditLanguageDto updatedLanguage)
+        public async Task<ActionResult<ServiceResponse<GetLanguageDto>>> EditLanguage(int languageId, EditLanguageDto updatedLanguage)
         {
             return Ok(await _languageService.EditLanguageAsync(languageId, updatedLanguage));
         }
 
         [HttpDelete("{languageId}")]
-        public async Task<ActionResult<IEnumerable<GetLanguageDto>>> DeleteLanguage(int languageId)
+        public async Task<ActionResult<ServiceResponse<IEnumerable<GetLanguageDto>>>> DeleteLanguage(int languageId)
         {
             return Ok(await _languageService.DeleteLanguageAsync(languageId));
         }
