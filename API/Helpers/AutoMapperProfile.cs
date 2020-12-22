@@ -31,7 +31,19 @@ namespace API.Helpers
 
             CreateMap<Sentence, GetSentenceDto>();
 
-            CreateMap<Translation, GetTranslationDto>();
+            CreateMap<Translation, GetTranslationDto>()
+                .ForMember(
+                    dest => dest.SentenceText,
+                    opts => opts.MapFrom(
+                        src => src.Sentence.Text
+                    )
+                )
+                .ForMember(
+                    dest => dest.Language,
+                    opts => opts.MapFrom(
+                        src => src.Language.Name
+                    )
+                );
         }
     }
 }

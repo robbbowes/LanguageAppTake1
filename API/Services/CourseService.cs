@@ -28,22 +28,21 @@ namespace API.Services
             Course course;
             if (includeLessons)
             {
-                course = await _context.Courses.FirstOrDefaultAsync(c => c.Id == id);
+                course = await _context.Courses.Include(c => c.Lessons).FirstOrDefaultAsync(c => c.Id == id);
             }
             else
             {
-                course = await _context.Courses.Include(c => c.Lessons).FirstOrDefaultAsync(c => c.Id == id);
+                course = await _context.Courses.FirstOrDefaultAsync(c => c.Id == id);
             }
 
             if (course == null)
             {
                 response.Success = false;
                 response.Message = "Course not found";
+                return response;
             }
-            else
-            {
-                response.Data = _mapper.Map<GetCourseDto>(course);
-            }
+
+            response.Data = _mapper.Map<GetCourseDto>(course);
             return response;
         }
 
