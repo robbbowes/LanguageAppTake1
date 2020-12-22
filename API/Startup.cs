@@ -37,6 +37,7 @@ namespace API
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<ILessonService, LessonService>();
             services.AddScoped<ISentenceService, SentenceService>();
+            services.AddScoped<IAuthService, AuthService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

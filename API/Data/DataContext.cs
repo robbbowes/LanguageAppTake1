@@ -1,4 +1,5 @@
 using API.Entities;
+using API.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -16,6 +17,8 @@ namespace API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            Utility.CreatePasswordHash("passw0rd", out byte[] passwordhash, out byte[] passwordSalt);
+
             modelBuilder.Entity<AppUserCourse>()
                 .HasKey(uc => new { uc.AppUserId, uc.CourseId });
 
@@ -23,12 +26,24 @@ namespace API.Data
                 new AppUser
                 {
                     Id = 1,
-                    UserName = "Robb"
+                    UserName = "Admin",
+                    PasswordHash = passwordhash,
+                    PasswordSalt = passwordSalt,
+                    UserRole = AppUserRole.Admin
                 },
                 new AppUser
                 {
                     Id = 2,
-                    UserName = "Elise"
+                    UserName = "Robb",
+                    PasswordHash = passwordhash,
+                    PasswordSalt = passwordSalt,
+                },
+                new AppUser
+                {
+                    Id = 3,
+                    UserName = "Elise",
+                    PasswordHash = passwordhash,
+                    PasswordSalt = passwordSalt,
                 }
             );
 
@@ -38,7 +53,7 @@ namespace API.Data
                 new AppUserCourse { AppUserId = 1, CourseId = 3 },
                 new AppUserCourse { AppUserId = 2, CourseId = 3 }
             );
-            
+
             modelBuilder.Entity<Course>().HasData(
                 new Course
                 {
@@ -126,7 +141,7 @@ namespace API.Data
                     Number = 3,
                     CourseId = 2,
                     LessonAudio = "localpath"
-                },                
+                },
                 new Lesson
                 {
                     Id = 7,
