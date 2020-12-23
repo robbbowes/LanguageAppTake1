@@ -9,6 +9,6 @@ namespace API.DTOs.Language
         public int Id { get; set; }
         public string Name { get; set; }
         public List<GetCourseDto> Courses { get; set; }
-        public List<GetSentenceDto> Translations { get; set; }
+        public List<GetSentenceDto> Sentences { get; set; }
     }
 }

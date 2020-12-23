@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using API.DTOs.AppUser;
 using API.DTOs.Auth;
 using API.Entities;
 using API.Interfaces;
@@ -31,7 +32,7 @@ namespace API.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(UserLoginDto request)
         {
-            ServiceResponse<string> response = await _authService.Login(request.UserName, request.Password);
+            ServiceResponse<GetAuthenticatedUserDto> response = await _authService.Login(request.UserName, request.Password);
             if (!response.Success)
             {
                 return BadRequest(response);

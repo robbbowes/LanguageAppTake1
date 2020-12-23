@@ -1,18 +1,17 @@
-using NUnit.Framework;
+using System;
+using API.DTOs.AppUser;
+using API.Entities;
+using Xunit;
 
-namespace tests
+namespace Tests
 {
-    public class Tests
+    public class UnitTest1
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
-        [Test]
+        [Fact]
         public void Test1()
         {
-            Assert.Fail();
+            ServiceResponse<GetUserDto> response = new ServiceResponse<GetUserDto>();
+            Assert.NotNull(response);
         }
     }
 }

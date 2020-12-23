@@ -19,7 +19,13 @@ namespace API.Controllers
         [HttpGet("{userName}")]
         public async Task<ActionResult<ServiceResponse<GetUserDto>>> GetUser(string userName)
         {
-            return await _userService.GetUserAsync(userName);
+            return await _userService.GetUserAsync(userName, false);
+        }
+
+        [HttpGet("{userName}/course")]
+        public async Task<ActionResult<ServiceResponse<GetUserDto>>> GetUserCourses(string userName)
+        {
+            return await _userService.GetUserAsync(userName, true);
         }
     
         [HttpGet]

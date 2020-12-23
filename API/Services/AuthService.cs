@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using API.Data;
+using API.DTOs.AppUser;
 using API.Entities;
 using API.Helpers;
 using API.Interfaces;
@@ -24,9 +25,9 @@ namespace API.Services
             _configuration = configuration;
         }
 
-        public async Task<ServiceResponse<string>> Login(string userName, string password)
+        public async Task<ServiceResponse<GetAuthenticatedUserDto>> Login(string userName, string password)
         {
-            ServiceResponse<string> response = new ServiceResponse<string>();
+            ServiceResponse<GetAuthenticatedUserDto> response = new ServiceResponse<GetAuthenticatedUserDto>();
             AppUser user = await _context.AppUsers.FirstOrDefaultAsync(x => x.UserName.ToLower() == userName.ToLower());
             if (user == null || !VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             {
@@ -90,7 +91,7 @@ namespace API.Services
             }
         }
 
-        private string CreateToken(AppUser user)
+        private GetAuthenticatedUserDto CreateToken(AppUser user)
         {
             List<Claim> claims = new List<Claim>
             {
@@ -114,7 +115,11 @@ namespace API.Services
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return tokenHandler.WriteToken(token);
+            string generatedToken = tokenHandler.WriteToken(token);
+            return new GetAuthenticatedUserDto {
+                UserName = user.UserName,
+                Token = generatedToken
+            };
         }
     }
 }

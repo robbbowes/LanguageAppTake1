@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using API.DTOs.AppUser;
 using API.Entities;
 
 namespace API.Interfaces
@@ -6,7 +7,7 @@ namespace API.Interfaces
     public interface IAuthService
     {
         Task<ServiceResponse<int>> Register(AppUser user, string password);
-        Task<ServiceResponse<string>> Login(string username, string password);
+        Task<ServiceResponse<GetAuthenticatedUserDto>> Login(string username, string password);
         Task<bool> UserExists(string username);
     }
 }

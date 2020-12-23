@@ -20,12 +20,21 @@ namespace API.Services
             _context = context;
         }
 
-        public async Task<ServiceResponse<GetUserDto>> GetUserAsync(string name)
+        public async Task<ServiceResponse<GetUserDto>> GetUserAsync(string name, bool includeCourses)
         {
             ServiceResponse<GetUserDto> response = new ServiceResponse<GetUserDto>();
-            AppUser appUser = await _context.AppUsers
-                .Include(x => x.AppUserCourses).ThenInclude(y => y.Course)
-                .FirstOrDefaultAsync(u => u.UserName.ToLower() == name.ToLower());
+            AppUser appUser;
+            if (includeCourses)
+            {
+                appUser = await _context.AppUsers
+                    .Include(x => x.AppUserCourses).ThenInclude(y => y.Course)
+                    .FirstOrDefaultAsync(u => u.UserName.ToLower() == name.ToLower());
+            }
+            else
+            {
+                appUser = await _context.AppUsers
+                    .FirstOrDefaultAsync(u => u.UserName.ToLower() == name.ToLower());
+            }
 
             if (appUser == null)
             {
