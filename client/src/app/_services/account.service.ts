@@ -4,8 +4,8 @@ import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 import { environment } from 'src/environments/environment';
+import { ServiceResponse } from '../_models/ServiceResponse';
 import { AuthenticatedUser } from '../_models/user/AuthenticatedUser';
-import { UserLogin } from '../_models/user/UserLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +19,11 @@ export class AccountService {
 
   login(userLoginData: any) {
     return this.http.post(this.baseUrl + 'auth/login', userLoginData).pipe(
-      map((response: AuthenticatedUser) => {
-        const authenticatedUser = response;
-        if (authenticatedUser) {
-          localStorage.setItem('authenticatedUser', JSON.stringify(authenticatedUser));
-          this.currentUserSource.next(authenticatedUser);
+      map((response: ServiceResponse<AuthenticatedUser>) => {
+        const payload = response;
+        if (response.success) {
+          localStorage.setItem('authenticatedUser', JSON.stringify(payload.data));
+          this.currentUserSource.next(payload.data);
         }
       })
     )
