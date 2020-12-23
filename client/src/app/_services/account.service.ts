@@ -20,10 +20,9 @@ export class AccountService {
   login(userLoginData: any) {
     return this.http.post(this.baseUrl + 'auth/login', userLoginData).pipe(
       map((response: ServiceResponse<AuthenticatedUser>) => {
-        const payload = response;
         if (response.success) {
-          localStorage.setItem('authenticatedUser', JSON.stringify(payload.data));
-          this.currentUserSource.next(payload.data);
+          localStorage.setItem('authenticatedUser', JSON.stringify(response.data));
+          this.currentUserSource.next(response.data);
         }
       })
     )
