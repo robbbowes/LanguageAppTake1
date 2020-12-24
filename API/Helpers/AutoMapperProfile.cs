@@ -19,9 +19,16 @@ namespace API.Helpers
                     dest => dest.Courses,
                     opts => opts.MapFrom(
                         src => src.AppUserCourses.Select(c => c.Course)
-                ));
+                    )
+                );
 
-            CreateMap<Course, GetCourseDto>();
+            CreateMap<Course, GetCourseDto>()
+                .ForMember(
+                    dest => dest.Language,
+                    opts => opts.MapFrom(
+                        src => src.Language.Name
+                    )
+                );
 
             CreateMap<Language, GetLanguageDto>();
 

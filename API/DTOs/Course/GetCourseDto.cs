@@ -8,7 +8,7 @@ namespace API.DTOs.Course
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int LanguageId { get; set; }
+        public string Language { get; set; }
         public List<GetLessonDto> Lessons { get; set; }
     }
 }

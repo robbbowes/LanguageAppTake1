@@ -1,0 +1,12 @@
+french icon: https://www.iconfinder.com/iconsets/european-country-flags
+
+french background: <span>Photo by <a href="https://unsplash.com/@sinzianasusa?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Sinziana Susa</a> on <a href="https://unsplash.com/s/photos/provence-lavender?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+
+norwegian icon: https://www.iconfinder.com/iconsets/world-flags-12
+
+norwegian background: <span>Photo by <a href="https://unsplash.com/@thomaslangnes?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Thomas Langnes</a> on <a href="https://unsplash.com/s/photos/norge?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+
+
+
+
+C:\Users\manet\source\repos\language-api\client\src\assets

@@ -28,6 +28,11 @@ export class AccountService {
     )
   }
 
+  logout() {
+    localStorage.removeItem('authenticatedUser');
+    this.currentUserSource.next(null);
+  }
+
   setCurrentUser(user: AuthenticatedUser) {
     this.currentUserSource.next(user);
   }

@@ -27,7 +27,7 @@ namespace API.Services
             if (includeCourses)
             {
                 appUser = await _context.AppUsers
-                    .Include(x => x.AppUserCourses).ThenInclude(y => y.Course)
+                    .Include(x => x.AppUserCourses).ThenInclude(y => y.Course).ThenInclude(z => z.Language)
                     .FirstOrDefaultAsync(u => u.UserName.ToLower() == name.ToLower());
             }
             else

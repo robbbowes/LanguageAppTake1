@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>{{ course.name }}</h1>
+
+<h3>Lessons: {{ course.lessons.length }}</h3>
+
+<!-- <img
+  src="../../../assets/{{ course.language.toLocaleLowerCase() }}-background.jpg"
+  alt="{{ course.language }} background image"
+/> -->
+
+  <div class="row">
+    <div class="col-8" *ngFor="let lesson of course.lessons">
+      <app-lesson-tile  [lesson]="lesson"></app-lesson-tile>
+    </div>
+  </div>
+</div>
