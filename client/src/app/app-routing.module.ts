@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CourseListComponent } from './my-courses/course-list/course-list.component';
 import { CourseRoomComponent } from './my-courses/course-room/course-room.component';
+import { LessonDetailComponent } from './my-courses/lessons/lesson-detail/lesson-detail.component';
+import { ReadLessonComponent } from './my-courses/lessons/lesson-detail/read-lesson/read-lesson.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
@@ -13,7 +15,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'course-list', component: CourseListComponent },
-      { path: 'course/:id', component: CourseRoomComponent }
+      { path: 'course/:courseId', component: CourseRoomComponent },
+      {
+        path: 'course/:courseId/lesson/:lessonId', component: LessonDetailComponent, children: [
+          { path: 'read', component: ReadLessonComponent }
+        ]
+      }
     ]
   }
 ];

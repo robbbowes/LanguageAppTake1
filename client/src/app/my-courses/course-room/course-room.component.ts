@@ -17,16 +17,14 @@ export class CourseRoomComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.courseId = params.id
+      this.courseId = params.courseId
     });
-    this.getCourse();
+    this.getCourse(this.courseId);
   }
 
-  getCourse() {
-    this.courseService.getCourse(this.courseId).subscribe(response => {
-      console.log(response)
+  getCourse(courseId: number) {
+    this.courseService.getCourse(courseId).subscribe(response => {
       this.course = response.data;
-      console.log(this.course)
     });
   }
 

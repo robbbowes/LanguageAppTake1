@@ -15,6 +15,8 @@ import { CourseTileComponent } from './my-courses/course-tile/course-tile.compon
 import { CourseRoomComponent } from './my-courses/course-room/course-room.component';
 import { LessonTileComponent } from './my-courses/course-room/lesson-tile/lesson-tile.component';
 import { AdminNavComponent } from './nav-bar/admin-nav/admin-nav.component';
+import { LessonDetailComponent } from './my-courses/lessons/lesson-detail/lesson-detail.component';
+import { ReadLessonComponent } from './my-courses/lessons/lesson-detail/read-lesson/read-lesson.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AdminNavComponent } from './nav-bar/admin-nav/admin-nav.component';
     CourseTileComponent,
     CourseRoomComponent,
     LessonTileComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    LessonDetailComponent,
+    ReadLessonComponent
   ],
   imports: [
     BrowserModule,

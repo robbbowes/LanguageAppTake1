@@ -7,6 +7,7 @@ import { Lesson } from 'src/app/_models/lesson/Lesson';
   styleUrls: ['./lesson-tile.component.css']
 })
 export class LessonTileComponent implements OnInit {
+  @Input() courseId: number;
   @Input() lesson: Lesson;
 
   constructor() { }

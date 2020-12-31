@@ -49,7 +49,9 @@ namespace API.Services
         {
             ServiceResponse<GetLessonDto> response = new ServiceResponse<GetLessonDto>();
 
-            Lesson lesson = await _context.Lessons.Include(l => l.Sentences).FirstOrDefaultAsync(l => l.Id == lessonId);
+            Lesson lesson = await _context.Lessons
+                .Include(l => l.Sentences).ThenInclude(s => s.Translations)
+                .FirstOrDefaultAsync(l => l.Id == lessonId);
             if (lesson == null)
             {
                 response.Success = false;
