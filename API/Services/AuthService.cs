@@ -118,6 +118,7 @@ namespace API.Services
             string generatedToken = tokenHandler.WriteToken(token);
             return new GetAuthenticatedUserDto {
                 UserName = user.UserName,
+                UserRole = user.UserRole,
                 Token = generatedToken
             };
         }

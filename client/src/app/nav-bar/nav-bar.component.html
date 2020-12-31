@@ -1,41 +1,50 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<!-- NAV BAR -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
   <div class="container">
-    <a href="/" class="navbar-brand"> Language App </a>
+    <a href="/" class="navbar-brand"
+      ><i class="fa fa-language" aria-hidden="true"></i> Language App
+    </a>
 
     <ul class="navbar-nav mr-auto">
-        <ng-container *ngIf="accountService.currentUser$ | async">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/catalogue" routerLinkActive="active"
-              >Catalogue</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/course-list" routerLinkActive="active"
-              >My Courses</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/messages" routerLinkActive="active"
-              >Messages</a
-            >
-          </li>
-        </ng-container>
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="/errors" routerLinkActive="active"
-            >Errors</a
+      <ng-container *ngIf="accountService.currentUser$ | async">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/catalogue" routerLinkActive="active"
+            >Catalogue
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/course-list"
+            routerLinkActive="active"
+            >My Courses</a
           >
-        </li> -->
-      </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/messages" routerLinkActive="active"
+            >Messages</a
+          >
+        </li>
+      </ng-container>
+    </ul>
 
     <ng-container *ngIf="accountService.currentUser$ | async as user">
-      <div class="dropdown" dropdown>
+      <div class="dropdown ml-auto" dropdown>
         <a class="dropdown-toggle text-light" dropdownToggle
-          >Welcome {{ user.userName | titlecase }}</a
+          ><i class="fa fa-user" aria-hidden="true"></i> Welcome
+          {{ user.userName | titlecase }}</a
         >
-        <div class="dropdown-menu mt-3" *dropdownMenu>
-          <a class="dropdown-item">Edit profile</a>
+        <div
+          class="dropdown-menu mt-2 navbar-dark bg-dark text-light"
+          *dropdownMenu
+        >
+          <a class="dropdown-item bg-dark"
+            ><i class="fa fa-cog" aria-hidden="true"></i> Edit profile</a
+          >
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="logout()">Logout</a>
+          <a class="dropdown-item bg-dark" (click)="logout()"
+            ><i class="fa fa-user-times" aria-hidden="true"></i> Logout</a
+          >
         </div>
       </div>
     </ng-container>
@@ -68,3 +77,8 @@
     </ng-container>
   </div>
 </nav>
+
+<!-- ADMIN DASHBOARD HEADER -->
+<ng-container *ngIf="(accountService.currentUser$ | async)?.userRole === 1">
+    <app-admin-nav></app-admin-nav>
+</ng-container>
