@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="col-12" *ngFor="let sentence of lesson.sentences; let i = index">
+    <p>{{ sentence.text }}</p>
+    <p *ngIf="sentence.translations[i]">{{ sentence.translations[i].translatedText }}</p>
+  </div>
+</div>
