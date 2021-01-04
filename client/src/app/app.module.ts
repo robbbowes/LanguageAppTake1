@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
+import { NgxTextDiffModule } from 'ngx-text-diff';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { LessonTileComponent } from './my-courses/course-room/lesson-tile/lesson
 import { AdminNavComponent } from './nav-bar/admin-nav/admin-nav.component';
 import { LessonDetailComponent } from './my-courses/lessons/lesson-detail/lesson-detail.component';
 import { ReadLessonComponent } from './my-courses/lessons/lesson-detail/read-lesson/read-lesson.component';
+import { TranslateLessonComponent } from './my-courses/lessons/lesson-detail/translate-lesson/translate-lesson.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ReadLessonComponent } from './my-courses/lessons/lesson-detail/read-les
     LessonTileComponent,
     AdminNavComponent,
     LessonDetailComponent,
-    ReadLessonComponent
+    ReadLessonComponent,
+    TranslateLessonComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,7 @@ import { ReadLessonComponent } from './my-courses/lessons/lesson-detail/read-les
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgxTextDiffModule,
     BsDropdownModule.forRoot()
   ],
   providers: [],

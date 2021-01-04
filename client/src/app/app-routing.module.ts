@@ -5,6 +5,7 @@ import { CourseListComponent } from './my-courses/course-list/course-list.compon
 import { CourseRoomComponent } from './my-courses/course-room/course-room.component';
 import { LessonDetailComponent } from './my-courses/lessons/lesson-detail/lesson-detail.component';
 import { ReadLessonComponent } from './my-courses/lessons/lesson-detail/read-lesson/read-lesson.component';
+import { TranslateLessonComponent } from './my-courses/lessons/lesson-detail/translate-lesson/translate-lesson.component';
 import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: 'course/:courseId', component: CourseRoomComponent },
       {
         path: 'course/:courseId/lesson/:lessonId', component: LessonDetailComponent, children: [
-          { path: 'read', component: ReadLessonComponent }
+          { path: 'read', component: ReadLessonComponent },
+          { path: 'translate', component: TranslateLessonComponent }
         ]
       }
     ]

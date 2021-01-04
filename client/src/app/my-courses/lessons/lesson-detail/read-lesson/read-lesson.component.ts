@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+
 import { Lesson } from 'src/app/_models/lesson/Lesson';
 import { Sentence } from 'src/app/_models/sentence/Sentence';
 import { LessonService } from 'src/app/_services/lesson.service';
@@ -24,15 +25,10 @@ export class ReadLessonComponent implements OnInit {
   }
 
   getLesson(lessonId: number) {
-    console.log("In getLesson()", lessonId)
     this.lessonService.getLessonWithSentences(lessonId).subscribe(response => {
       this.lesson = response.data
       this.sentences = response.data.sentences;
     });
   }
-
-  // getTranslation(sentenceId: number) {
-  //   this.sentences[sentenceId].translations
-  // }
 
 }

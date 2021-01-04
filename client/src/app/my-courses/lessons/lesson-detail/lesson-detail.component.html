@@ -1,9 +1,8 @@
 <div class="container" *ngIf="lesson">
   <h1>{{ lesson.name }}</h1>
 
-  <button routerLink="read" class="btn btn-secondary">
-    Read
-  </button>
+  <button (click)="onRead()" class="btn btn-secondary">Read</button>
+  <button (click)="onTranslate()" class="btn btn-secondary">Translate</button>
 
   <router-outlet></router-outlet>
 </div>

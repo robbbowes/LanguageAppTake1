@@ -27,9 +27,12 @@ export class LessonDetailComponent implements OnInit {
     });
   }
 
-  openRead() {
-    console.log("Clicked")
+  onRead() {
     this.router.navigate(['read'], { relativeTo : this.route });
+  }
+
+  onTranslate() {
+    this.router.navigate(['translate'], { relativeTo : this.route });
   }
 
 }
