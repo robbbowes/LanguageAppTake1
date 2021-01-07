@@ -1,0 +1,9 @@
+<div class="card mb-2 mr-1 ml-1">
+  <div class="card-body">
+    <div class="mb-1">
+      <h6 class="card-title ml-2">{{ type | lessonType }}</h6>
+    </div>
+    <p class="card-text">{{ lesson.sentences }}</p>
+    <a [routerLink]="type.lessonType" class="btn btn-primary" (click)="onHideTiles()">Open lesson</a>
+  </div>
+</div>

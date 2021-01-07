@@ -1,11 +1,16 @@
-<td-ngx-text-diff
-[left]="left"
-[right]="right"
-[showToolbar]=true
-[showBtnToolbar]=true
 
-[compareRowsClass]="ngClass"
 
-(compareResults)="onCompareResults($event)"
->
+<button class="btn btn-primary" (click)="onShowDifferences()">
+  {{ showTranslation ? "Hide" : "Show" }} translation
+</button>
 
+<ng-container *ngIf="showTranslation">
+  <td-ngx-text-diff
+    [left]="left"
+    [right]="right"
+    [showToolbar]="true"
+    [showBtnToolbar]="true"
+    (compareResults)="onCompareResults($event)"
+  >
+  </td-ngx-text-diff>
+</ng-container>

@@ -1,8 +1,16 @@
 <div class="container" *ngIf="lesson">
-  <h1>{{ lesson.name }}</h1>
+  <h3>{{ lesson.name }}</h3>
 
-  <button (click)="onRead()" class="btn btn-secondary">Read</button>
-  <button (click)="onTranslate()" class="btn btn-secondary">Translate</button>
+  <div class="row justify-content-center" *ngIf="!hideLessons">
+    <app-lesson-type-tile
+      (hideTiles)="onLessonsHidden($event)"
+      *ngFor="let lessonType of lessonTypes"
+      [lesson]="lesson"
+      [type]="lessonType"
+    ></app-lesson-type-tile>
+  </div>
 
-  <router-outlet></router-outlet>
+  <div *ngIf="hideLessons">
+    <router-outlet></router-outlet>
+  </div>
 </div>

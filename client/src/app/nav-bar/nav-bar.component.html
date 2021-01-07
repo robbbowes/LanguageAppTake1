@@ -28,11 +28,11 @@
       </ng-container>
     </ul>
 
-    <ng-container *ngIf="accountService.currentUser$ | async as user">
+    <ng-container *ngIf="accountService.currentUser$ | async as authenticatedUser">
       <div class="dropdown ml-auto" dropdown>
         <a class="dropdown-toggle text-light" dropdownToggle
           ><i class="fa fa-user" aria-hidden="true"></i> Welcome
-          {{ user.userName | titlecase }}</a
+          {{ authenticatedUser.userName | titlecase }}</a
         >
         <div
           class="dropdown-menu mt-2 navbar-dark bg-dark text-light"
@@ -77,8 +77,3 @@
     </ng-container>
   </div>
 </nav>
-
-<!-- ADMIN DASHBOARD HEADER -->
-<ng-container *ngIf="(accountService.currentUser$ | async)?.userRole === 1">
-    <app-admin-nav></app-admin-nav>
-</ng-container>

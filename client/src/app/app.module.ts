@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxTextDiffModule } from 'ngx-text-diff';
+import { Diff } from 'diff'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,10 +15,11 @@ import { HomeComponent } from './home/home.component';
 import { CourseTileComponent } from './my-courses/course-tile/course-tile.component';
 import { CourseRoomComponent } from './my-courses/course-room/course-room.component';
 import { LessonTileComponent } from './my-courses/course-room/lesson-tile/lesson-tile.component';
-import { AdminNavComponent } from './nav-bar/admin-nav/admin-nav.component';
 import { LessonDetailComponent } from './my-courses/lessons/lesson-detail/lesson-detail.component';
 import { ReadLessonComponent } from './my-courses/lessons/lesson-detail/read-lesson/read-lesson.component';
 import { TranslateLessonComponent } from './my-courses/lessons/lesson-detail/translate-lesson/translate-lesson.component';
+import { LessonTypeTileComponent } from './my-courses/course-room/lesson-type-tile/lesson-type-tile.component';
+import { LessonTypePipe } from './_pipes/lesson-type.pipe';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,11 @@ import { TranslateLessonComponent } from './my-courses/lessons/lesson-detail/tra
     CourseTileComponent,
     CourseRoomComponent,
     LessonTileComponent,
-    AdminNavComponent,
     LessonDetailComponent,
     ReadLessonComponent,
-    TranslateLessonComponent
+    TranslateLessonComponent,
+    LessonTypeTileComponent,
+    LessonTypePipe
   ],
   imports: [
     BrowserModule,
