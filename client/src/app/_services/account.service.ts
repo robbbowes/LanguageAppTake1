@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators'
 
@@ -15,13 +16,14 @@ export class AccountService {
   private currentUserSource = new ReplaySubject<AuthenticatedUser>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   login(userLoginData: any) {
     return this.http.post(this.baseUrl + 'auth/login', userLoginData).pipe(
       map((response: ServiceResponse<AuthenticatedUser>) => {
         if (response.success) {
           localStorage.setItem('authenticatedUser', JSON.stringify(response.data));
+          console.log(response)
           this.currentUserSource.next(response.data);
         }
       })
@@ -31,6 +33,7 @@ export class AccountService {
   logout() {
     localStorage.removeItem('authenticatedUser');
     this.currentUserSource.next(null);
+    this.router.navigateByUrl('/auth');
   }
 
   setCurrentUser(user: AuthenticatedUser) {

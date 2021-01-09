@@ -20,6 +20,7 @@ import { ReadLessonComponent } from './my-courses/lessons/lesson-detail/read-les
 import { TranslateLessonComponent } from './my-courses/lessons/lesson-detail/translate-lesson/translate-lesson.component';
 import { LessonTypeTileComponent } from './my-courses/course-room/lesson-type-tile/lesson-type-tile.component';
 import { LessonTypePipe } from './_pipes/lesson-type.pipe';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LessonTypePipe } from './_pipes/lesson-type.pipe';
     ReadLessonComponent,
     TranslateLessonComponent,
     LessonTypeTileComponent,
-    LessonTypePipe
+    LessonTypePipe,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

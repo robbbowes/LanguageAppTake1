@@ -1,0 +1,27 @@
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow-y: hidden;
+  margin: 88px 0px -300px 0px;
+  background-color: var(--rjb-darker-blue-fill);
+}
+
+form input {
+  background-color: var(--rjb-offwhite-fill);
+  color: var(--rjb-offwhite-empty);
+}
+
+form button {
+  background-color: var(--rjb-offwhite-fill);
+  color: var(--rjb-offwhite-empty);
+}
+
+form button:hover,
+form button:active {
+  background-color: var(--rjb-offwhite-empty);
+  color: var(--rjb-offwhite-fill);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}

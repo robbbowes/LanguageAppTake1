@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+    --rjb-grey-fill:  #687864;
+    --rjb-grey-empty:  #bbd4d4;
+    --rjb-darker-blue-fill: #31708e;
+    --rjb-darker-blue-empty: #c5eff7;
+    --rjb-grey-blue-fill: #5085a5;
+    --rjb-grey-blue-empty: #c8f7c5;
+    --rjb-lighter-blue-fill: #8fc1e3;
+    --rjb-lighter-blue-empty: #4b5555;
+    --rjb-offwhite-fill: #f7f9fb;
+    --rjb-offwhite-empty: #638bb3;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #222;
+    padding-bottom: 50px;
+}
+
+.rjb-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
