@@ -18,7 +18,7 @@ namespace API.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register(UserRegisterDto request)
         {
-            ServiceResponse<int> response = await _authService.Register(
+            ServiceResponse<GetAuthenticatedUserDto> response = await _authService.Register(
                 new AppUser { UserName = request.UserName }, request.Password
             );
 

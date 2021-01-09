@@ -41,9 +41,9 @@ namespace API.Services
             return response;
         }
 
-        public async Task<ServiceResponse<int>> Register(AppUser user, string password)
+        public async Task<ServiceResponse<GetAuthenticatedUserDto>> Register(AppUser user, string password)
         {
-            ServiceResponse<int> response = new ServiceResponse<int>();
+            ServiceResponse<GetAuthenticatedUserDto> response = new ServiceResponse<GetAuthenticatedUserDto>();
             if (await UserExists(user.UserName))
             {
                 response.Success = false;
@@ -58,7 +58,7 @@ namespace API.Services
                 await _context.AppUsers.AddAsync(user);
                 await _context.SaveChangesAsync();
 
-                response.Data = user.Id;
+                response.Data = CreateToken(user);
             }
             return response;
         }
@@ -116,7 +116,8 @@ namespace API.Services
             SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
 
             string generatedToken = tokenHandler.WriteToken(token);
-            return new GetAuthenticatedUserDto {
+            return new GetAuthenticatedUserDto
+            {
                 UserName = user.UserName,
                 UserRole = user.UserRole,
                 Token = generatedToken

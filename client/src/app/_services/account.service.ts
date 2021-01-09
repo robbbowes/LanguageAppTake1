@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators'
 import { environment } from 'src/environments/environment';
 import { ServiceResponse } from '../_models/ServiceResponse';
 import { AuthenticatedUser } from '../_models/user/AuthenticatedUser';
+import { UserLogin } from '../_models/user/UserLogin';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,19 @@ export class AccountService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  login(userLoginData: any) {
+  register(userRegisterData: UserLogin) {
+    return this.http.post(this.baseUrl + 'auth/register', userRegisterData).pipe(
+      map((response: ServiceResponse<AuthenticatedUser>) => {
+        if (response.success) {
+          localStorage.setItem('authenticatedUser', JSON.stringify(response.data));
+          console.log(response)
+          this.currentUserSource.next(response.data);
+        }
+      })
+    )
+  }
+
+  login(userLoginData: UserLogin) {
     return this.http.post(this.baseUrl + 'auth/login', userLoginData).pipe(
       map((response: ServiceResponse<AuthenticatedUser>) => {
         if (response.success) {

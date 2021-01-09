@@ -11,18 +11,34 @@ import { AccountService } from '../_services/account.service';
 export class AuthComponent implements OnInit {
   userLogin: UserLogin = { userName: '', password: '' };
   registerMode = false;
+  loading = false;
 
   constructor(public accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.accountService.currentUser$.subscribe()) {
+      this.router.navigate(['']);
+    }
   }
 
   login() {
+    this.loading = true;
     this.accountService.login(this.userLogin).subscribe(() => {
       this.router.navigateByUrl('/');
     }, error => {
       console.log(error);
     })
+    this.loading = false;
+  }
+
+  register() {
+    this.loading = true;
+    this.accountService.register(this.userLogin).subscribe(() => {
+      this.router.navigateByUrl('/')
+    }, error => {
+      console.log(error);
+    })
+    this.loading = false;
   }
 
   toggleRegisterMode = () => {

@@ -6,7 +6,7 @@ namespace API.Interfaces
 {
     public interface IAuthService
     {
-        Task<ServiceResponse<int>> Register(AppUser user, string password);
+        Task<ServiceResponse<GetAuthenticatedUserDto>> Register(AppUser user, string password);
         Task<ServiceResponse<GetAuthenticatedUserDto>> Login(string username, string password);
         Task<bool> UserExists(string username);
     }

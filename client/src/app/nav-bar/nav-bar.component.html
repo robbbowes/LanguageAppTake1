@@ -18,7 +18,7 @@
       <div id="dropdown" class="dropdown ml-auto" dropdown>
         <a class="dropdown-toggle" dropdownToggle
           ><i class="fa fa-user" aria-hidden="true"></i> Welcome
-          {{ authenticatedUser.userName | titlecase }}</a
+          {{ authenticatedUser.userName | titlecase  }}</a
         >
         <div
           class="dropdown-menu"
@@ -34,32 +34,5 @@
         </div>
       </div>
     </ng-container>
-
-    <!-- <ng-container *ngIf="(accountService.currentUser$ | async) === null">
-      <form
-        #loginForm="ngForm"
-        class="form-inline mt-2 mt-md-0"
-        (ngSubmit)="login()"
-        autocomplete="off"
-      >
-        <input
-          name="username"
-          [(ngModel)]="userLogin.userName"
-          class="form-control mr-sm-2 p-1"
-          type="text"
-          placeholder="Username"
-        />
-        <input
-          name="password"
-          [(ngModel)]="userLogin.password"
-          class="form-control mr-sm-2 p-1"
-          type="password"
-          placeholder="Password"
-        />
-        <button class="btn btn-light p-1" type="submit">
-          Login
-        </button>
-      </form>
-    </ng-container> -->
   </div>
 </nav>
