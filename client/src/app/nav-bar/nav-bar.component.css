@@ -19,6 +19,8 @@
   align-items: center;
   padding: 20px 0;
   transition: all 0.6s ease-in-out;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .rjb-nav ul {
@@ -76,5 +78,3 @@
 .rjb-nav.rjb-active .dropdown-menu a:hover {
   background-color: var(--rjb-grey-blue-empty);
 }
-
-
