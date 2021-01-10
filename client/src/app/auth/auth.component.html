@@ -35,7 +35,7 @@
 
 <ng-container
   *ngIf="
-    (accountService.currentUser$ | async) === null && registerMode && !loading
+    (accountService.currentUser$ | async) === null
   "
 >
   <div class="auth-body">

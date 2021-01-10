@@ -13,11 +13,12 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   {
     path: '',
-    component: HomeComponent,
-    runGuardsAndResolvers: 'always',
-    canActivate: [AuthGuard],
-    children: [
+    component: HomeComponent 
+  },
 
+    // runGuardsAndResolvers: 'always',
+    // canActivate: [AuthGuard],
+    // children: [
       { path: 'course-list', component: CourseListComponent },
       { path: 'course/:courseId', component: CourseRoomComponent },
       {
@@ -26,8 +27,8 @@ const routes: Routes = [
           { path: 'translate', component: TranslateLessonComponent }
         ]
       }
-    ]
-  }
+    // ]
+  // }
 ];
 
 @NgModule({

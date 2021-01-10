@@ -16,15 +16,17 @@ export class AuthComponent implements OnInit {
   constructor(public accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
-    if (this.accountService.currentUser$.subscribe()) {
-      this.router.navigate(['']);
-    }
+    this.accountService.currentUser$.subscribe(user => {
+      if (user !== null) {
+        this.router.navigate(['/']);
+      }
+    })
   }
 
   login() {
     this.loading = true;
     this.accountService.login(this.userLogin).subscribe(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigate(['/']);
     }, error => {
       console.log(error);
     })
@@ -34,7 +36,7 @@ export class AuthComponent implements OnInit {
   register() {
     this.loading = true;
     this.accountService.register(this.userLogin).subscribe(() => {
-      this.router.navigateByUrl('/')
+      this.router.navigate(['/'])
     }, error => {
       console.log(error);
     })

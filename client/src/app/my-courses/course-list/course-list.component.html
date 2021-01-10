@@ -1,8 +1,7 @@
-<div class="container">
+<div class="course-list-hero">
   <div class="row">
-    <app-course-tile
+    <app-course-tile class="course-list-tile"
       *ngFor="let course of userCourses"
-      class="col-m-6"
       [course]="course"
     ></app-course-tile>
   </div>

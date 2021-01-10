@@ -1,4 +1,4 @@
-<nav class="rjb-nav" #navBar>
+<!-- <nav class="rjb-nav" #navBar>
   <div class="rjb-container">
     <h1 class="rjb-logo">
       <a routerLink=""
@@ -34,5 +34,128 @@
         </div>
       </div>
     </ng-container>
+  </div>
+</nav> -->
+
+<!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Carousel</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarCollapse"
+      aria-controls="navbarCollapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"
+            >Home <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link disabled"
+            href="#"
+            tabindex="-1"
+            aria-disabled="true"
+            >Disabled</a
+          >
+        </li>
+      </ul>
+    </div>
+    <ng-container
+      *ngIf="accountService.currentUser$ | async as authenticatedUser"
+    >
+      <div id="dropdown" class="dropdown ml-auto" dropdown>
+        <a class="dropdown-toggle" dropdownToggle
+          ><i class="fa fa-user" aria-hidden="true"></i> Welcome
+          {{ authenticatedUser.userName | titlecase  }}</a
+        >
+        <div
+          class="dropdown-menu"
+          *dropdownMenu
+        >
+          <a class="dropdown-item"
+            ><i class="fa fa-cog" aria-hidden="true"></i> Edit profile</a
+          >
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()"
+            ><i class="fa fa-user-times" aria-hidden="true"></i> Logout</a
+          >
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-md navbar-light fixed-top py-3">
+  <div class="container">
+    <a class="navbar-brand">
+      <img
+        src="../assets/icon.svg"
+        width="50"
+        height="50"
+        alt=""
+        class="logo"
+      />
+      <h3 class="d-inline align-middle"> Lingual</h3>
+    </a>
+    <button
+      class="navbar-toggler"
+      data-toggle="collapse"
+      data-target="#navbarCollapse"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div *ngIf="accountService.currentUser$ | async as authenticatedUser">
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a routerLink="/course-list" class="nav-link">Courses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Meet The Authors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">Contacts</a>
+          </li>
+        </ul>
+
+        <div id="dropdown" class="dropdown nav-item" dropdown>
+          <a class="dropdown-toggle nav-item" dropdownToggle
+            ><i class="fa fa-user" aria-hidden="true"></i> Welcome
+            {{ authenticatedUser.userName | titlecase  }}
+            </a
+          >
+          <div
+            class="dropdown-menu"
+            *dropdownMenu
+          >
+            <a class="dropdown-item"
+              ><i class="fa fa-cog" aria-hidden="true"></i> Edit profile</a
+            >
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()"
+              ><i class="fa fa-user-times" aria-hidden="true"></i> Logout</a
+            >
+          </div>
+        </div>
+      </div>
+
+
+    </div>
   </div>
 </nav>

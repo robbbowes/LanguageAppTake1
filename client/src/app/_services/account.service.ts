@@ -36,7 +36,6 @@ export class AccountService {
       map((response: ServiceResponse<AuthenticatedUser>) => {
         if (response.success) {
           localStorage.setItem('authenticatedUser', JSON.stringify(response.data));
-          console.log(response)
           this.currentUserSource.next(response.data);
         }
       })
@@ -46,7 +45,7 @@ export class AccountService {
   logout() {
     localStorage.removeItem('authenticatedUser');
     this.currentUserSource.next(null);
-    this.router.navigateByUrl('/auth');
+    this.router.navigate(['/auth']);
   }
 
   setCurrentUser(user: AuthenticatedUser) {
