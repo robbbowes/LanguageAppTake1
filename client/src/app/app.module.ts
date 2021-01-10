@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxTextDiffModule } from 'ngx-text-diff';
-import { Diff } from 'diff'
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { TranslateLessonComponent } from './my-courses/lessons/lesson-detail/tra
 import { LessonTypeTileComponent } from './my-courses/course-room/lesson-type-tile/lesson-type-tile.component';
 import { LessonTypePipe } from './_pipes/lesson-type.pipe';
 import { AuthComponent } from './auth/auth.component';
+import { MaterialModule } from './_modules/material.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AuthComponent } from './auth/auth.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MaterialModule,
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
