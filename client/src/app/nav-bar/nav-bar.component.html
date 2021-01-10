@@ -1,69 +1,6 @@
-<!-- <nav class="navbar navbar-expand-md navbar-light fixed-top py-3">
-  <div class="container">
-    <a class="navbar-brand">
-      <img
-        src="../assets/icon.svg"
-        width="50"
-        height="50"
-        alt=""
-        class="logo"
-      />
-      <h3 class="d-inline align-middle"> Lingual</h3>
-    </a>
-    <button
-      class="navbar-toggler"
-      data-toggle="collapse"
-      data-target="#navbarCollapse"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div *ngIf="accountService.currentUser$ | async as authenticatedUser">
-      <div id="navbarCollapse" class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a routerLink="/course-list" class="nav-link">Courses</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Meet The Authors</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Contacts</a>
-          </li>
-        </ul>
-
-        <div id="dropdown" class="dropdown nav-item" dropdown>
-          <a class="dropdown-toggle nav-item" dropdownToggle
-            ><i class="fa fa-user" aria-hidden="true"></i> Welcome
-            {{ authenticatedUser.userName | titlecase  }}
-            </a
-          >
-          <div
-            class="dropdown-menu"
-            *dropdownMenu
-          >
-            <a class="dropdown-item"
-              ><i class="fa fa-cog" aria-hidden="true"></i> Edit profile</a
-            >
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="logout()"
-              ><i class="fa fa-user-times" aria-hidden="true"></i> Logout</a
-            >
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-</nav> -->
-
 <nav class="navbar navbar-expand-md navbar-light fixed-top py-3">
   <div class="container">
-    <a class="navbar-brand">
+    <a class="navbar-brand" routerLink="/">
       <img
         src="../assets/icon.svg"
         width="50"
@@ -97,16 +34,16 @@
             <a class="nav-link">Contacts</a>
           </li>
           <li id="dropdown" class="nav-item dropdown ml-5" dropdown>
-            <a class="dropdown-toggle nav-link" dropdownToggle
+            <a class="dropdown-toggle nav-link pointer" dropdownToggle
               ><i class="fa fa-user" aria-hidden="true"></i> Welcome
               {{ authenticatedUser.userName | titlecase }}
             </a>
             <div class="dropdown-menu" *dropdownMenu>
-              <a class="dropdown-item"
+              <a class="dropdown-item pointer"
                 ><i class="fa fa-cog" aria-hidden="true"></i> Edit profile</a
               >
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" (click)="logout()"
+              <a class="dropdown-item pointer" (click)="logout()"
                 ><i class="fa fa-user-times" aria-hidden="true"></i> Logout</a
               >
             </div>

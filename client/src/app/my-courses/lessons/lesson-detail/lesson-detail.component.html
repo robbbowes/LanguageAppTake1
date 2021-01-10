@@ -1,13 +1,18 @@
-<div class="container" *ngIf="lesson">
-  <h3>{{ lesson.name }}</h3>
+<div *ngIf="lesson">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+      <h1>{{ lesson.name }}</h1>
+    </div>
+  </div>
 
-  <div class="row justify-content-center" *ngIf="!hideLessons">
-    <app-lesson-type-tile
-      (hideTiles)="onLessonsHidden($event)"
-      *ngFor="let lessonType of lessonTypes"
-      [lesson]="lesson"
-      [type]="lessonType"
-    ></app-lesson-type-tile>
+  <div class="row m-0 justify-content-center" *ngIf="!hideLessons">
+    <div class="col-md-10" *ngFor="let lessonType of lessonTypes">
+      <app-lesson-type-tile
+        (hideTiles)="onLessonsHidden($event)"
+        [lesson]="lesson"
+        [type]="lessonType"
+      ></app-lesson-type-tile>
+    </div>
   </div>
 
   <div *ngIf="hideLessons">

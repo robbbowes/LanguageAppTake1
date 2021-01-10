@@ -1,4 +1,4 @@
-.rjb-hero {
+.home-hero {
     height: 530px;
     color: #fff;
     display: flex;
@@ -22,22 +22,22 @@
     background-position: center center;
 }
 
-.rjb-hero h1 {
+.home-hero h1 {
     font-size: 46px;
     margin: -20px 0 20px;
 }
 
-.rjb-hero p {
+.home-hero p {
     font-size: 20px;
     letter-spacing: 1px;
 }
 
-.rjb-content h2, .content h3 {
+.home-content h2, .home-content h3 {
     font-size: 150%;
     margin: 20px 0;
 }
 
-.rjb-content p {
+.home-content p {
     color: #555;
     line-height: 30px;
     letter-spacing: 1.1px;

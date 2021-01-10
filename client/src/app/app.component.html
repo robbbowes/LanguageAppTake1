@@ -1,6 +1,6 @@
-<app-nav-bar></app-nav-bar>
-<div flex style="height: -webkit-calc(100% - 92px)">
-  <div ng-view flex layout-fill style="height: 100%">
-    <router-outlet></router-outlet>
-  </div>
+<div class="app-header app-row">
+  <app-nav-bar></app-nav-bar>
+</div>
+<div class="app-body app-row app-scroll-y">
+  <router-outlet></router-outlet>
 </div>

@@ -17,5 +17,44 @@
   --primary-overlay: rgba(50, 146, 166, 0.8);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  align-items: center;
+  height: 100vh;
+  color: var(--rjb-darker-blue-fill);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+/* .app-container {
+  align-items: center;
+  height: 100vh;
+  color: var(--rjb-darker-blue-fill);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  margin-bottom: 20px;
+} */
+
+@media screen { 
+  body { margin: 0 }
+  .app-row, .app-col { overflow: hidden; position: absolute; }
+  .app-row { left: 0; right: 0; }
+  .app-col { top: 0; bottom: 0; }
+  .app-scroll-x { overflow-x: auto; }
+  .app-scroll-y { overflow-y: auto; }
+
+  .app-header.app-row { height: 92px; top: 0; }
+  .app-body.app-row { top: 92px; bottom: 50px; }
+  .app-footer.app-row { height: 50px; bottom: 0; }
+}

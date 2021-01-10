@@ -1,5 +1,9 @@
-<div class="container" *ngIf="course">
-  <h1>{{ course.name }}</h1>
+<div *ngIf="course">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+      <h1>{{ course.name }}</h1>
+    </div>
+  </div>
 
   <h3>Lessons: {{ course.lessons.length }}</h3>
 
@@ -8,9 +12,15 @@
   alt="{{ course.language }} background image"
 /> -->
 
-  <div class="row">
-    <div class="col-6" *ngFor="let lesson of course.lessons">
-      <app-lesson-tile [lesson]="lesson" [courseId]="courseId"></app-lesson-tile>
+  <div class="row mx-5" *ngFor="let lesson of course.lessons">
+    <div class="col-4">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur voluptatibus mollitia sit necessitatibus dolorum totam nisi maiores, placeat tenetur voluptates temporibus nam velit recusandae? Quos mollitia consectetur ad recusandae maiores deleniti quod nemo itaque suscipit eos. Aliquid animi a vitae?
+    </div>
+    <div class="col-8" >
+      <app-lesson-tile
+        [lesson]="lesson"
+        [courseId]="courseId"
+      ></app-lesson-tile>
     </div>
   </div>
 </div>
