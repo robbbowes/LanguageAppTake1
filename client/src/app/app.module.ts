@@ -22,6 +22,7 @@ import { LessonTypeTileComponent } from './my-courses/course-room/lesson-type-ti
 import { LessonTypePipe } from './_pipes/lesson-type.pipe';
 import { AuthComponent } from './auth/auth.component';
 import { MaterialModule } from './_modules/material.module';
+import { AddSentenceComponent } from './upload/add-sentence/add-sentence.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MaterialModule } from './_modules/material.module';
     TranslateLessonComponent,
     LessonTypeTileComponent,
     LessonTypePipe,
-    AuthComponent
+    AuthComponent,
+    AddSentenceComponent
   ],
   imports: [
     BrowserModule,

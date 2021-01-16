@@ -33,5 +33,6 @@ namespace API.Controllers
         {
             return await _sentenceService.GetTranslationAsync(sentenceId, languageName);
         }
+
     }
 }

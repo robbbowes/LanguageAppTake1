@@ -18,9 +18,9 @@ export class ReadLessonComponent implements OnInit {
   constructor(private route: ActivatedRoute, private lessonService: LessonService) { }
 
   ngOnInit(): void {
-    this.route.parent.params.subscribe((params: Params) => {
+    this.route.params.subscribe((params: Params) => {
       this.getLesson(params.lessonId);
-    });
+    })
   }
 
   getLesson(lessonId: number) {

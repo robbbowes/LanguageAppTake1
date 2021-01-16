@@ -28,6 +28,11 @@ namespace API.Controllers
             return await _lessonService.GetLessonAsync(lessonId);
         }
 
+        [HttpPost("{lessonId}")]
+        public async Task<ServiceResponse<int>> AddSentence(int lessonId, PostSentenceDto postSentenceDto) {
+            return await _lessonService.AddSentenceAsync(lessonId, postSentenceDto);
+        }
+
         [HttpGet("{lessonId}/sentence")]
         public async Task<ActionResult<ServiceResponse<GetLessonDto>>> GetLessonSentences(int lessonId)
         {

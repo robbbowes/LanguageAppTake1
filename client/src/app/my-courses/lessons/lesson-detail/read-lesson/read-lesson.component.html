@@ -1,10 +1,19 @@
-<div class="row" *ngIf="lesson">
-  <div class="col-12" *ngFor="let sentence of lesson.sentences; let i = index">
-    <p>{{ sentence.text }}</p>
-    <p *ngIf="sentence.translations[i]">{{ sentence.translations[i].translatedText }}</p>
+<div *ngIf="lesson">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+      <h1>{{ lesson.name }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div
+      class="col-12"
+      *ngFor="let sentence of lesson.sentences; let i = index"
+    >
+      <p>{{ sentence.text }}</p>
+      <p *ngIf="sentence.translations[i]">
+        {{ sentence.translations[i].translatedText }}
+      </p>
+    </div>
   </div>
 </div>
-
-
-
-

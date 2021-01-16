@@ -8,9 +8,10 @@ namespace API.Interfaces
 {
     public interface ILessonService
     {
-         public Task<ServiceResponse<IEnumerable<GetLessonDto>>> GetLessonsAsync();
-         public Task<ServiceResponse<GetLessonDto>> GetLessonAsync(int lessonId);
-         public Task<ServiceResponse<GetLessonDto>> GetLessonSentencesAsync(int lessonId);
-         public Task<ServiceResponse<GetSentenceDto>> GetLessonSentenceAsync(int lessonId, int sentenceId);
+        public Task<ServiceResponse<IEnumerable<GetLessonDto>>> GetLessonsAsync();
+        public Task<ServiceResponse<GetLessonDto>> GetLessonAsync(int lessonId);
+        public Task<ServiceResponse<GetLessonDto>> GetLessonSentencesAsync(int lessonId);
+        public Task<ServiceResponse<GetSentenceDto>> GetLessonSentenceAsync(int lessonId, int sentenceId);
+        public Task<ServiceResponse<int>> AddSentenceAsync(int lessonId, PostSentenceDto postSentenceDto);
     }
 }

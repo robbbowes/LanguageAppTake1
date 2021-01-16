@@ -21,6 +21,17 @@ namespace API.Services
             _context = context;
         }
 
+        public async Task<ServiceResponse<int>> AddSentenceAsync(int lessonId, PostSentenceDto postSentenceDto)
+        {
+            ServiceResponse<int> response = new ServiceResponse<int>();
+            postSentenceDto.LessonId = lessonId;
+            Sentence sentence = _mapper.Map<Sentence>(postSentenceDto);
+            await _context.AddAsync(sentence);
+            var i = await _context.SaveChangesAsync();
+            response.Data = i;
+            return response;
+        }
+
         public async Task<ServiceResponse<GetLessonDto>> GetLessonAsync(int lessonId)
         {
             ServiceResponse<GetLessonDto> response = new ServiceResponse<GetLessonDto>();

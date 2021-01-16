@@ -13,21 +13,20 @@ const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   {
     path: '',
-    component: HomeComponent 
+    component: HomeComponent
   },
 
-    // runGuardsAndResolvers: 'always',
-    // canActivate: [AuthGuard],
-    // children: [
-      { path: 'course-list', component: CourseListComponent },
-      { path: 'course/:courseId', component: CourseRoomComponent },
-      {
-        path: 'course/:courseId/lesson/:lessonId', component: LessonDetailComponent, children: [
-          { path: 'read', component: ReadLessonComponent },
-          { path: 'translate', component: TranslateLessonComponent }
-        ]
-      }
-    // ]
+  // runGuardsAndResolvers: 'always',
+  // canActivate: [AuthGuard],
+  // children: [
+  { path: 'course-list', component: CourseListComponent },
+  { path: 'course/:courseId', component: CourseRoomComponent },
+  { path: 'course/:courseId/lesson/:lessonId', component: LessonDetailComponent },
+  { path: 'course/:courseId/lesson/:lessonId/read', component: ReadLessonComponent },
+  { path: 'course/:courseId/lesson/:lessonId/translate', component: TranslateLessonComponent }
+
+
+  // ]
   // }
 ];
 

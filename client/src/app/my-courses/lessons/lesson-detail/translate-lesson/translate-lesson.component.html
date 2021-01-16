@@ -1,10 +1,37 @@
+<div *ngIf="lesson">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-12">
+      <h1>{{ lesson.name }}</h1>
+    </div>
+  </div>
+</div>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Sentence</th>
+      <th scope="col">Correct Sentence</th>
+      <th scope="col">Your sentence</th>
+      <th scope="col">Differences</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sentence of sentences; let i = index">
+      <th scope="row">{{ i }}</th>
+      <td>{{ sentence.text }}</td>
+      <td>{{ sentence.translations[i].translatedText }}</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+</table>
 
 <button class="btn btn-primary" (click)="onShowDifferences()">
   {{ showTranslation ? "Hide" : "Show" }} translation
 </button>
 
-<ng-container *ngIf="showTranslation">
+<!-- <ng-container *ngIf="showTranslation">
   <td-ngx-text-diff
     [left]="left"
     [right]="right"
@@ -13,4 +40,4 @@
     (compareResults)="onCompareResults($event)"
   >
   </td-ngx-text-diff>
-</ng-container>
+</ng-container> -->

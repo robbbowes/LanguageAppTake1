@@ -33,10 +33,14 @@ namespace API.Helpers
             CreateMap<Language, GetLanguageDto>();
 
             CreateMap<Lesson, GetLessonDto>();
+            CreateMap<PostLessonDto, Lesson>();
+
+
             CreateMap<AddLanguageDto, Language>();
             CreateMap<EditLanguageDto, Language>();
 
             CreateMap<Sentence, GetSentenceDto>();
+            CreateMap<PostSentenceDto, Sentence>();
 
             CreateMap<Translation, GetTranslationDto>()
                 .ForMember(
@@ -51,6 +55,7 @@ namespace API.Helpers
                         src => src.Language.Name
                     )
                 );
+            CreateMap<PostTranslationDto, Translation>();
         }
     }
 }
